@@ -1,12 +1,17 @@
 ---
 
 - name: Ensure software-properties-common is installed
-  ansible.builtin.package:
+  ansible.builtin.apt:
     name: software-properties-common
 
 - name: Ensure certbot is installed
-  ansible.builtin.package:
+  ansible.builtin.apt:
     name: certbot
+
+- name: Ensure pip is installed
+  ansible.builtin.apt:
+    name: python3-pip
+  when: certbot_dns_hetzner
 
 - name: Ensure certbot-dns-hetzner is installed
   ansible.builtin.pip:
