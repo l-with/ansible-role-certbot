@@ -4,10 +4,14 @@
   ansible.builtin.apt:
     name: software-properties-common
 
-- name: Ensure certbot is installed
+- name: Ensure snap is installed
   ansible.builtin.apt:
-    name: certbot
+    name: snapd
 
+- name: Ensure certbot is installed
+  community.genereal.snap:
+    name: certbot
+    
 - name: Ensure pip is installed
   ansible.builtin.apt:
     name: python3-pip
