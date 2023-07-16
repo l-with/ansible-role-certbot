@@ -11,7 +11,7 @@
 - name: Ensure pip is installed
   ansible.builtin.apt:
     name: python3-pip
-  when: certbot_dns_hetzner || certbot_dns_scaleway || certbot_dns_digitalocean
+  when: certbot_dns_hetzner or certbot_dns_scaleway or certbot_dns_digitalocean
 
 - name: Ensure certbot-dns-hetzner is installed
   ansible.builtin.pip:
