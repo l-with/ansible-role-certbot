@@ -4,22 +4,28 @@
   ansible.builtin.apt:
     name: software-properties-common
 
-- name: Ensure snap is installed
-  ansible.builtin.apt:
-    name: snapd
-
 - name: Ensure certbot is installed
-  community.genereal.snap:
+  ansible.builtin.apt:
     name: certbot
-    
+
 - name: Ensure pip is installed
   ansible.builtin.apt:
     name: python3-pip
-  when: certbot_dns_hetzner
+  when: certbot_dns_hetzner || certbot_dns_scaleway || certbot_dns_digitalocean
 
 - name: Ensure certbot-dns-hetzner is installed
   ansible.builtin.pip:
     name: certbot-dns-hetzner
   when: certbot_dns_hetzner
+
+- name: Ensure certbot-dns-scaleway is installed
+  ansible.builtin.pip:
+    name: certbot-dns-scaleway
+  when: certbot_dns_scaleway
+
+- name: Ensure certbot-dns-digitalocean is installed
+  ansible.builtin.pip:
+    name: certbot-dns-digitalocean
+  when: certbot_dns_digitalocean
 
 ...
