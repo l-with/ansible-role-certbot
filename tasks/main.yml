@@ -23,4 +23,10 @@
     name: certbot-dns-digitalocean
   when: certbot_dns_digitalocean
 
+- name: Ensure deploy-hook in /etc/letsencrypt/cli.ini
+  ansible.builtin.blockinfile:
+    path:  /etc/letsencrypt/cli.ini
+    block: "deploy-hook {{ certbot_deploy_hook }}"
+  when: certbot_deploy_hook is defined
+
 ...
