@@ -3,5 +3,6 @@
 certbot_dns_hetzner:      false
 certbot_dns_scaleway:     false
 certbot_dns_digitalocean: false
+#certbot_deploy_hook:
 
 ...
