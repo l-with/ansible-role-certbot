@@ -7,20 +7,24 @@
 - name: Ensure certbot is installed
   ansible.builtin.pip:
     name: certbot
+    break_system_packages: "{{ certbot_pip_break_system_packages }}"
 
 - name: Ensure certbot-dns-hetzner is installed
   ansible.builtin.pip:
     name: certbot-dns-hetzner
+    break_system_packages: "{{ certbot_pip_break_system_packages }}"
   when: certbot_dns_hetzner
 
 - name: Ensure certbot-dns-scaleway is installed
   ansible.builtin.pip:
     name: certbot-dns-scaleway
+    break_system_packages: "{{ certbot_pip_break_system_packages }}"
   when: certbot_dns_scaleway
 
 - name: Ensure certbot-dns-digitalocean is installed
   ansible.builtin.pip:
     name: certbot-dns-digitalocean
+    break_system_packages: "{{ certbot_pip_break_system_packages }}"
   when: certbot_dns_digitalocean
 
 - name: Ensure deploy-hook in /etc/letsencrypt/cli.ini
